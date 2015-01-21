@@ -1,0 +1,60 @@
+<!--
+  Copyright 2015 Andrew Back <andrew@abopen.com>
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<!-- Edit dialog  -->
+
+<script type="text/x-red" data-template-name="mraaAnalogRead">
+	<div class="form-row">
+        <label for="node-input-pin"><i class="fa fa-circle"></i> Pin</label>
+        <input type="text" id="node-input-pin" placeholder="0">
+    </div>
+	<div class="form-row">
+        <label for="node-input-timer"><i class="fa fa-repeat"></i> Repeat time</label>
+        <input type="text" id="node-input-timer" placeholder="5">
+    </div>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+<style>
+</style>
+
+<!-- Help text -->
+<script type="text/x-red" data-help-name="mraaAnalogRead">
+   <p>Read an analogue input via the Intel MRAA library.</p>
+   <p>Sends output <b>msg.payload</b>.</p>
+   <p>The sample frequency can bet configured in seconds.</p>
+</script>
+
+<!-- Register node type  -->
+<script type="text/javascript">
+    RED.nodes.registerType('mraaAnalogRead',{
+        category: 'MRAA',     
+        defaults: {        
+  			pin: {value: '0', required:false},
+			timer: {value: '5', required:true},
+			name: {value:""} 
+        },
+		color:"#0071c5",
+        inputs:0,              
+        outputs:1,          
+        icon: "arrow-in.png",   
+        label: function() {   
+            return this.name||"mraaAnalogRead";
+        },
+        labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        }
+    });
+</script>
